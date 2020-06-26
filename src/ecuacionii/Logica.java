@@ -75,7 +75,10 @@ public class Logica {
             auxiliar1 = Math.log10(1) / Math.log10(2);
             auxiliar2 = Math.log10(2) / Math.log10(2);
 
-            System.out.println("<html><body><table border = \"1\"><tr><td>" + raiz[1] + "</td><td>" + auxiliar1 + "</td><td>" + condicion1 + "</td></tr><tr><td>" + raiz[0] + "</td><td>" + auxiliar2 + "</td><td>" + condicion2 + "</td></tr> </table></body></html>");
+            System.out.println();
+            System.out.println("" + raiz[1] + " | " + auxiliar1 + " | " + condicion1 + "");
+            System.out.println("" + raiz[0] + " | " + auxiliar2 + " | " + condicion2 + "");
+            System.out.println();
 
             coeficientes=Gauss(raiz[1], auxiliar1, condicion1, raiz[0], auxiliar2, condicion2);
 
@@ -99,7 +102,12 @@ public class Logica {
             System.out.println("C1*" + raiz[1] + " + C2* " + raiz[1] + " = " + condicion1);
             System.out.println("C1*" + raiz[0] + " + C2*" + raiz[1] + " = " + condicion2);
             System.out.println("Matriz para Gauss");
-            System.out.println("<html><body><table><tr><td>" + raiz[1] + "</td><td>" + raiz[1] + "</td><td>" + condicion1 + "</td></tr><tr><td>" + raiz[0] + "</td><td>" + raiz[1] + "</td><td>" + condicion2 + "</td></tr> </table></body></html>");
+            
+            System.out.println();
+            System.out.println("" + raiz[1] + " | " + raiz[1] + " | " + condicion1 + "");
+            System.out.println("" + raiz[0] + " | " + raiz[1] + " | " + condicion2 + "");
+            System.out.println();
+            
             coeficientes=Gauss(raiz[1], raiz[1], condicion1, raiz[0], raiz[1], condicion2);
             System.out.println("Donde C1 y C2 son:");
             System.out.println("C1 = " + coeficientes[0]);
@@ -129,13 +137,13 @@ public class Logica {
         indiceFn2 = indiceFn * (-1);
 
         System.out.println(indiceFn2 + " F_{i-1} + (" + (numB2 * (-1)) + "*F_{i-2}) = (" + indiceFn2 + ")2^(" + numA + "i)" + numA2);
-        System.out.println(indiceFn2 * numA2 + " F<sub>i-1</sub> + (" + (numB2 * (-1)) * numA2 + "*F<sub>i-2</sub>) = (" + indiceFn2 + ")2<sup>" + numA + "i</sup>");
+        System.out.println(indiceFn2 * numA2 + " F_{i-1} + (" + (numB2 * (-1)) * numA2 + "*F_{i-2}) = (" + indiceFn2 + ")2^(" + numA + "i)");
         System.out.println("Sumando las ecuaciones para obtener la homogenea:");
 
         double b = (numB * (-1)) + (indiceFn2 * numA2);
         double c = numB2 * (-1) * numA2;
 
-        System.out.println(indiceFn + " F<sub>i</sub> + (" + b + "*F<sub>i-1</sub>)+ (" + c + "*F<sub>i-2</sub>) = 0");
+        System.out.println(indiceFn + " F_{i} + (" + b + "*F_{i-1})+ (" + c + "*F_{i-2}) = 0");
 
         double[] raiz = new double[2];
 
@@ -163,8 +171,11 @@ public class Logica {
 
             auxiliar1 = Math.log10(1) / Math.log10(2);
             auxiliar2 = (Math.log10(2) / Math.log10(2)) * raiz[1];
-
-            System.out.println("<html><body><table><tr><td>" + indiceFn + "</td><td>" + auxiliar1 + "</td><td>" + condicion1 + "</td></tr><tr><td>" + raiz[0] + "</td><td>" + auxiliar2 + "</td><td>" + condicion2 + "</td></tr> </table></body></html>");
+            
+            System.out.println();
+            System.out.println("" + indiceFn + " | " + auxiliar1 + " | " + condicion1 + "");
+            System.out.println("" + raiz[0] + " | " + auxiliar2 + " | " + condicion2 + "");
+            System.out.println();
 
             coeficientes=Gauss(raiz[1], auxiliar1, condicion1, raiz[0], auxiliar2, condicion2);
 
@@ -175,32 +186,35 @@ public class Logica {
             System.out.println("F(n) = 1*n^" + numA + "+1*lg(n)*n^" + numA + "");
         } else {
             System.out.println("La solucion General es:");
-            System.out.println("F(i) =  C1*" +  raiz[0]+"<sup>i</sup> + C2*" + raiz[1]+"<sup>i</sup>");
+            System.out.println("F(i) =  C1*" +  raiz[0]+"^i + C2*" + raiz[1]+"^i");
             System.out.println("Remplazando i por lg(n)");
-            System.out.println("F(n) =  C1*" +  raiz[0]+"<sup>lg(n)</sup> + C2*" + raiz[1]+"<sup>lg(n)</sup>");
+            System.out.println("F(n) =  C1*" +  raiz[0]+"^lg(n) + C2*" + raiz[1]+"^lg(n)");
             System.out.println("Las condiciones iniciales se calculan con:");
             System.out.println("Fn = " + numA + "+ " + numB + "*F_{n/2}");
             System.out.println("F(1) = " + condicion1);
             System.out.println("F(2) = " + condicion2);
             System.out.println("Las ecuaciones para calcular C1 y C2 son:");
-            System.out.println("C1*1 <sup>lg("+  raiz[0]+")</sup> + C2*1<sup>lg(" + raiz[1]+")</sup> = "+ condicion1);
-            System.out.println("C1*2 <sup>lg("+  raiz[0]+")</sup> + C2*2<sup>lg(" + raiz[1]+")</sup> = "+ condicion2);
+            System.out.println("C1*1^lg("+  raiz[0]+") + C2*1^lg(" + raiz[1]+") = "+ condicion1);
+            System.out.println("C1*2^lg("+  raiz[0]+") + C2*2^lg(" + raiz[1]+") = "+ condicion2);
             System.out.println("C1*"+ indiceFn+" + C2*" + indiceFn+" = "+ condicion1);
             System.out.println("C1*"+  raiz[0]+" + C2*" + raiz[1]+" = "+ condicion2);
             System.out.println("Matriz para Gauss");
 
             auxiliar1 = Math.log10(1) / Math.log10(2);
             auxiliar2 = (Math.log10(2) / Math.log10(2)) * raiz[1];
-
-            System.out.println("<html><body><table><tr><td>"+indiceFn+"</td><td>"+indiceFn+"</td><td>"+condicion1+"</td></tr><tr><td>"+raiz[0]+"</td><td>"+raiz[1]+"</td><td>"+condicion2+"</td></tr> </table></body></html>");
-
+            
+            System.out.println();
+            System.out.println("" + indiceFn + " | " + indiceFn + " | " + condicion1 + "");
+            System.out.println("" + raiz[0] + " | " + raiz[1] + " | " + condicion2 + "");
+            System.out.println();
+            
             coeficientes=Gauss(indiceFn,indiceFn,condicion1,raiz[0],raiz[1],condicion2);
 
             System.out.println("Donde C1 y C2 son:");
             System.out.println("C1 = " + coeficientes[0]);
             System.out.println("C2 = " + coeficientes[1]);
             System.out.println("La solucion es: ");
-            System.out.println("F(n) = "+(coeficientes[0]*Math.pow(raiz[0],Math.log10(indiceFn) / Math.log10(2)))+ "* n <sup>"+(Math.log10(raiz[0]) / Math.log10(2)) +"</sup>+("+coeficientes[1]+")* n <sup>"+(Math.log10(raiz[1]) / Math.log10(2)));
+            System.out.println("F(n) = "+(coeficientes[0]*Math.pow(raiz[0],Math.log10(indiceFn) / Math.log10(2)))+ "* n^"+(Math.log10(raiz[0]) / Math.log10(2)) +"+("+coeficientes[1]+")* n^"+(Math.log10(raiz[1]) / Math.log10(2)));
         }
     }
     
